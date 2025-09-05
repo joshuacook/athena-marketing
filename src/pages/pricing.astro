@@ -6,42 +6,36 @@ import PricingCard from "@/components/pricing.astro";
 
 const pricing = [
   {
-    name: "Personal",
+    name: "Developer",
     price: "Free",
     popular: false,
     features: [
-      "Lifetime free",
-      "Up to 3 users",
-      "Unlimited Pages",
-      "Astro Sub domain",
-      "Basic Integrations",
-      "Community Support",
+      "10,000 API calls/month",
+      "Basic context management",
+      "Standard vector search",
+      "Community support",
+      "Developer portal access",
     ],
     button: {
       text: "Get Started",
-      link: "/",
+      link: "https://athena-developer-portal.vercel.app",
     },
   },
   {
-    name: "Startup",
-    price: {
-      monthly: "$19",
-      annual: "$16",
-      discount: "10%",
-      original: "$24",
-    },
+    name: "Professional",
+    price: "Usage-based",
     popular: true,
     features: [
-      "All Free Features",
-      "Up to 20 users",
-      "20 Custom domains",
-      "Unlimited Collaborators",
-      "Advanced Integrations",
-      "Priority Support",
+      "Unlimited API calls",
+      "Advanced context types",
+      "Premium LLM models",
+      "Priority support",
+      "Custom integrations",
+      "Analytics dashboard",
     ],
     button: {
-      text: "Get Started",
-      link: "#",
+      text: "Contact Sales",
+      link: "/contact",
     },
   },
   {
@@ -49,12 +43,12 @@ const pricing = [
     price: "Custom",
     popular: false,
     features: [
-      "All Pro Features",
-      "Unlimited Custom domains",
-      "99.99% Uptime SLA",
-      "SAML & SSO Integration",
-      "Dedicated Account Manager",
-      "24/7 Phone Support",
+      "Dedicated infrastructure",
+      "SLA guarantees",
+      "Custom deployment",
+      "24/7 support",
+      "Training and onboarding",
+      "Advanced security",
     ],
     button: {
       text: "Contact us",
@@ -69,7 +63,7 @@ const pricing = [
     <Sectionhead>
       <Fragment slot="title">Pricing</Fragment>
       <Fragment slot="desc">
-        Simple & Predictable pricing. No Surprises.
+        Start free and scale with usage-based pricing. No hidden costs.
       </Fragment>
     </Sectionhead>
 
