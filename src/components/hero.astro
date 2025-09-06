@@ -1,49 +1,22 @@
 ---
-import { Picture } from "astro:assets";
-import heroImage from "@/assets/hero.png";
 import Link from "@/components/ui/link.astro";
-import { Icon } from "astro-icon/components";
 ---
 
-<main
-  class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
-  <div class="py-6 md:order-1 hidden md:block">
-    <Picture
-      src={heroImage}
-      alt="Athena AI Platform"
-      widths={[200, 400, 600]}
-      sizes="(max-width: 800px) 100vw, 620px"
-      loading="eager"
-      format="avif"
-    />
-  </div>
-  <div>
-    <h1
-      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
-      AI-Powered Knowledge Management Platform
-    </h1>
-    <p class="text-lg mt-4 text-slate-600 max-w-xl">
-      Athena provides intelligent context management, vector search, and LLM integration through developer-friendly APIs. Build smarter applications with contextual understanding.
-    </p>
-    <div class="mt-6 flex flex-col sm:flex-row gap-3">
-      <Link
-        href="https://athena-developer-portal.vercel.app"
-        target="_blank"
-        class="flex gap-1 items-center justify-center"
-        rel="noopener">
-        <Icon class="text-white w-5 h-5" name="bx:bxs-dashboard" />
-        Get Started
-      </Link>
-      <Link
-        size="lg"
-        style="outline"
-        rel="noopener"
-        href="https://athena-developer-portal.vercel.app/dashboard/documentation"
-        class="flex gap-1 items-center justify-center"
-        target="_blank">
-        <Icon class="text-black w-4 w-4" name="bx:bxs-book" />
-        View Documentation
-      </Link>
-    </div>
+<main class="flex flex-col items-center justify-center min-h-[80vh] text-center px-4">
+  <h1 class="text-5xl md:text-7xl font-bold tracking-tight max-w-4xl">
+    Your Headline Here
+  </h1>
+  
+  <p class="text-xl md:text-2xl mt-6 text-slate-600 max-w-2xl">
+    Your value proposition goes here. This is where we'll craft the perfect message together.
+  </p>
+  
+  <div class="mt-8 flex gap-4">
+    <Link href="https://athena-developer-portal.vercel.app" size="lg">
+      Primary CTA
+    </Link>
+    <Link href="https://athena-developer-portal.vercel.app/dashboard/documentation" size="lg" style="outline">
+      Secondary CTA
+    </Link>
   </div>
 </main>
