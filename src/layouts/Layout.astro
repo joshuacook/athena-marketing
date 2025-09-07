@@ -21,7 +21,7 @@ const { title } = Astro.props;
 
 const makeTitle = title
   ? title + " | " + "Athena"
-  : "Athena - The Complete AI Data Platform";
+  : "Athena - The Memory-Forward AI Platform for Developers";
 ---
 
 <!doctype html>
@@ -35,17 +35,17 @@ const makeTitle = title
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
-      description="One API for structured data, AI context, and intelligent file management. Build complete AI applications without juggling multiple services."
+      description="Build AI applications that actually remember. Athena provides persistent memory infrastructure that separates identity from information, giving your AI true understanding."
       canonical={canonicalURL}
       openGraph={{
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `Athena - The Complete AI Data Platform`,
+          title: `Athena - The Memory-Forward AI Platform for Developers`,
           image: resolvedImageWithDomain,
         },
         image: {
-          alt: "Athena - The Complete AI Data Platform",
+          alt: "Athena - The Memory-Forward AI Platform for Developers",
         },
       }}
     />
