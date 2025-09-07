@@ -168,9 +168,25 @@ Client → Athena Service → [Firestore, GCS, OpenAI, etc.]
 4. How do we handle resource-intensive operations (embeddings, file processing)?
 5. Is this the end state, or a stepping stone?
 
+## The North Star Vision
+
+**One unified service from the developer's perspective.**
+
+Not "here's our collection of microservices" but simply "here's Athena."
+
+This is about developer experience:
+- No explaining different services
+- No coordinating between APIs
+- No "use Context Service for X but LLM Service for Y"
+- Just Athena
+
+Implementation details (how we build it, scale it, deploy it) are problems to solve when we get there. The product vision is clear: **One Service.**
+
+Note: We'll need a gateway service eventually, but not right now. That's a future implementation detail, not a product concern.
+
 ## Next Steps
 
-- Define "unified" in concrete terms
-- Identify killer features that require unification
-- Design integration points
-- Consider implementation challenges
+- Focus on what developers experience with "one service"
+- Define the unified API surface
+- Ignore implementation details for now
+- Stay at product vision level
