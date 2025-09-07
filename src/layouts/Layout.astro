@@ -13,7 +13,7 @@ export interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 const resolvedImageWithDomain = new URL(
-  "/opengraph.jpg",
+  "/opengraph.png",
   Astro.site
 ).toString();
 
@@ -21,7 +21,7 @@ const { title } = Astro.props;
 
 const makeTitle = title
   ? title + " | " + "Athena"
-  : "Athena - AI-Powered Knowledge Management Platform";
+  : "Athena - The Complete AI Data Platform";
 ---
 
 <!doctype html>
@@ -35,17 +35,17 @@ const makeTitle = title
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
-      description="Athena is an AI-powered knowledge management platform with contextual search, LLM integration, and developer-friendly APIs."
+      description="One API for structured data, AI context, and intelligent file management. Build complete AI applications without juggling multiple services."
       canonical={canonicalURL}
       openGraph={{
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `Athena - AI-Powered Knowledge Management Platform`,
+          title: `Athena - The Complete AI Data Platform`,
           image: resolvedImageWithDomain,
         },
         image: {
-          alt: "Athena Platform Screenshot",
+          alt: "Athena - The Complete AI Data Platform",
         },
       }}
     />
