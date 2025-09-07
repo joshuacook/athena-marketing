@@ -1,0 +1,74 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/container.astro";
+
+// Get all non-draft docs
+const docs = await getCollection('docs', ({ data }) => {
+  return data.draft !== true;
+});
+
+// Group docs by section
+const docsBySection = docs.reduce((acc, doc) => {
+  const section = doc.data.section;
+  if (!acc[section]) {
+    acc[section] = [];
+  }
+  acc[section].push(doc);
+  return acc;
+}, {} as Record<string, typeof docs>);
+
+// Sort docs within each section by order
+Object.keys(docsBySection).forEach(section => {
+  docsBySection[section].sort((a, b) => a.data.order - b.data.order);
+});
+
+// Define section order
+const sectionOrder = ['Getting Started', 'API Reference', 'Guides', 'Tutorials'];
+const orderedSections = sectionOrder.filter(section => docsBySection[section]);
+
+// Add any remaining sections not in the predefined order
+Object.keys(docsBySection).forEach(section => {
+  if (!sectionOrder.includes(section)) {
+    orderedSections.push(section);
+  }
+});
+---
+
+<Layout title="Documentation - Athena">
+  <Container>
+    <div class="mx-auto max-w-4xl mt-14">
+      <div class="mb-8">
+        <h1 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+          Documentation
+        </h1>
+        <p class="text-lg mt-4 text-slate-600">
+          Everything you need to build with Athena's AI data platform.
+        </p>
+      </div>
+
+      <div class="space-y-12">
+        {orderedSections.map((section) => (
+          <div>
+            <h2 class="text-2xl font-bold mb-4">{section}</h2>
+            <div class="grid gap-4">
+              {docsBySection[section].map((doc) => (
+                <a 
+                  href={`/docs/${doc.slug}`}
+                  class="block p-6 bg-white rounded-lg border border-slate-200 hover:border-slate-300 hover:shadow-sm transition-all"
+                >
+                  <h3 class="text-xl font-semibold text-slate-800">
+                    {doc.data.title}
+                  </h3>
+                  <p class="text-slate-600 mt-2">
+                    {doc.data.description}
+                  </p>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </Container>
+</Layout>

@@ -31,9 +31,20 @@ const teamCollection = defineCollection({
   }),
 });
 
+const docsCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    section: z.string(), // e.g., "Getting Started", "API Reference", "Guides"
+    order: z.number().default(0), // For sorting docs within sections
+    draft: z.boolean().default(false),
+  }),
+});
+
 // 3. Export a single `collections` object to register your collection(s)
 //    This key should match your collection directory name in "src/content"
 export const collections = {
   'blog': blogCollection,
   'team': teamCollection,
+  'docs': docsCollection,
 };
