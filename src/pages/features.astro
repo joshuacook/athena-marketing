@@ -1,0 +1,171 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/container.astro";
+import { Icon } from "astro-icon/components";
+
+const features = [
+  {
+    category: "Data Management",
+    items: [
+      {
+        title: "Unified Data Layer",
+        description: "Store structured data, AI context, and files in one place. No more juggling multiple databases.",
+        icon: "bx:bxs-data",
+        highlights: ["Structured storage", "Context management", "File handling"]
+      },
+      {
+        title: "Knowledge Graphs",
+        description: "Build relationships between data points automatically. Create hierarchical contexts that mirror your application's logic.",
+        icon: "bx:bxs-network-chart",
+        highlights: ["Automatic relationships", "Hierarchical contexts", "Semantic connections"]
+      },
+      {
+        title: "Smart File Processing",
+        description: "Upload any file type and automatically extract meaning. PDFs, images, and documents become searchable knowledge.",
+        icon: "bx:bxs-file-find",
+        highlights: ["Auto-extraction", "Multi-format support", "AI understanding"]
+      }
+    ]
+  },
+  {
+    category: "AI & Intelligence",
+    items: [
+      {
+        title: "Vector Search",
+        description: "Semantic search powered by Firestore. Find information by meaning, not just keywords.",
+        icon: "bx:bxs-search-alt-2",
+        highlights: ["Semantic understanding", "Fast retrieval", "Context-aware results"]
+      },
+      {
+        title: "LLM Integration",
+        description: "Built-in access to GPT-5, GPT-5-mini, and GPT-4o. Generate responses with full context awareness.",
+        icon: "bx:bxs-bot",
+        highlights: ["Latest models", "Context injection", "Usage tracking"]
+      },
+      {
+        title: "Automatic Embeddings",
+        description: "Every piece of data is automatically embedded for semantic search. No manual vector management needed.",
+        icon: "bx:bxs-magic-wand",
+        highlights: ["Auto-generation", "Optimized storage", "Real-time updates"]
+      }
+    ]
+  },
+  {
+    category: "Developer Experience",
+    items: [
+      {
+        title: "Single API Key",
+        description: "One key for everything. No more managing multiple credentials for different services.",
+        icon: "bx:bxs-key",
+        highlights: ["Unified auth", "Simple setup", "Secure by default"]
+      },
+      {
+        title: "RESTful APIs",
+        description: "Clean, predictable APIs that follow REST principles. Comprehensive documentation with examples.",
+        icon: "bx:bxs-plug",
+        highlights: ["Standard patterns", "Clear documentation", "Code examples"]
+      },
+      {
+        title: "Developer Portal",
+        description: "Manage applications, monitor usage, and generate API keys from an intuitive dashboard.",
+        icon: "bx:bxs-dashboard",
+        highlights: ["Usage analytics", "Key management", "Application settings"]
+      }
+    ]
+  },
+  {
+    category: "Production Ready",
+    items: [
+      {
+        title: "Scalable Infrastructure",
+        description: "Built on Google Cloud Run and Firestore. Scales automatically with your needs.",
+        icon: "bx:bxs-server",
+        highlights: ["Auto-scaling", "Global distribution", "99.9% uptime"]
+      },
+      {
+        title: "Rate Limiting",
+        description: "Built-in rate limiting protects your application and ensures fair usage across all users.",
+        icon: "bx:bxs-timer",
+        highlights: ["Per-key limits", "Automatic protection", "Custom tiers"]
+      },
+      {
+        title: "Usage Analytics",
+        description: "Track API usage, model consumption, and costs in real-time. Never be surprised by a bill.",
+        icon: "bx:bxs-bar-chart-alt-2",
+        highlights: ["Real-time tracking", "Cost monitoring", "Detailed breakdowns"]
+      }
+    ]
+  }
+];
+---
+
+<Layout title="Features - Athena">
+  <Container>
+    <div class="py-16">
+      <!-- Hero Section -->
+      <div class="text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+          Everything you need for AI-powered applications
+        </h1>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          Athena provides a complete data platform that unifies structured storage, AI context management, 
+          and intelligent file processing in a single, developer-friendly API.
+        </p>
+      </div>
+
+      <!-- Features Grid -->
+      {features.map((category) => (
+        <div class="mb-16">
+          <h2 class="text-3xl font-bold mb-8">{category.category}</h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            {category.items.map((feature) => (
+              <div class="bg-white rounded-lg border border-slate-200 p-6 hover:shadow-lg transition-shadow">
+                <div class="flex items-start gap-4">
+                  <div class="bg-black rounded-full p-3 flex-shrink-0">
+                    <Icon class="text-white w-6 h-6" name={feature.icon} />
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="text-xl font-semibold mb-2">{feature.title}</h3>
+                    <p class="text-slate-600 mb-4">{feature.description}</p>
+                    <ul class="space-y-1">
+                      {feature.highlights.map((highlight) => (
+                        <li class="text-sm text-slate-500 flex items-center gap-2">
+                          <Icon class="w-4 h-4 text-green-500" name="bx:bxs-check-circle" />
+                          {highlight}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <!-- CTA Section -->
+      <div class="mt-20 bg-black rounded-lg p-12 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+          Ready to build with Athena?
+        </h2>
+        <p class="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
+          Join developers who are building smarter applications with our complete AI data platform.
+        </p>
+        <div class="flex gap-4 justify-center">
+          <a 
+            href="https://athena-developer-portal.vercel.app" 
+            class="bg-white text-black px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition"
+          >
+            Get Started
+          </a>
+          <a 
+            href="/docs/getting-started" 
+            class="border border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-black transition"
+          >
+            Read the Docs
+          </a>
+        </div>
+      </div>
+    </div>
+  </Container>
+</Layout>
