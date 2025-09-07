@@ -14,7 +14,7 @@ The official marketing website for Athena - an AI-powered knowledge management p
 
 ## Related Services
 
-- [Developer Portal](https://athena-developer-portal.vercel.app) - Management dashboard and documentation
+- [Developer Portal](https://app.athena.radicalsymmetry.com) - Management dashboard and documentation
 - [Context Service](https://athena-context-928477690681.us-central1.run.app) - Context management API
 - [LLM Service](https://athena-llm-928477690681.us-central1.run.app) - Language model integration API
 

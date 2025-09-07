@@ -14,7 +14,7 @@ Learn how to authenticate and make your first API call to Athena services.
 
 First, you'll need an API key to authenticate your requests:
 
-1. Go to [API Keys](https://athena-developer-portal.vercel.app/dashboard/api-keys) in your dashboard
+1. Go to [API Keys](https://app.athena.radicalsymmetry.com/dashboard/api-keys) in your dashboard
 2. Click "Create API Key"
 3. Give your key a descriptive name
 4. Copy and save your key securely - you won't be able to see it again!

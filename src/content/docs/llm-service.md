@@ -133,7 +133,7 @@ All API calls are tracked for usage analytics:
 - Response times and latencies
 - Error rates and types
 
-Access your usage dashboard at the [Developer Portal](https://athena-developer-portal.vercel.app/dashboard).
+Access your usage dashboard at the [Developer Portal](https://app.athena.radicalsymmetry.com/dashboard).
 
 ## Best Practices
 
