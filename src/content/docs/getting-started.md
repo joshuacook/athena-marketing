@@ -1,71 +1,89 @@
 ---
-title: "Getting Started with Athena"
-description: "Learn how to set up and start using the Athena AI platform"
+title: "Getting Started"
+description: "Learn how to authenticate and make your first API call to Athena services"
 section: "Getting Started"
 order: 1
 draft: false
 ---
 
-# Getting Started with Athena
+# Getting Started
 
-Welcome to Athena, the complete AI data platform that unifies structured data, AI context, and intelligent file management.
+Learn how to authenticate and make your first API call to Athena services.
 
-## Quick Start
+## Step 1: Get Your API Key
 
-Get up and running with Athena in minutes:
+First, you'll need an API key to authenticate your requests:
 
-### 1. Sign Up and Get Your API Key
+1. Go to [API Keys](https://athena-developer-portal.vercel.app/dashboard/api-keys) in your dashboard
+2. Click "Create API Key"
+3. Give your key a descriptive name
+4. Copy and save your key securely - you won't be able to see it again!
 
-1. Visit [Athena Developer Portal](https://athena-developer-portal.vercel.app)
-2. Create your account
-3. Generate your API key from the dashboard
+Your API key should look like: `athena_abc123...`
 
-### 2. Install the SDK
+## Step 2: Authentication
+
+Include your API key in the Authorization header of all requests:
+
+```
+Authorization: Bearer YOUR_API_KEY
+```
+
+Replace `YOUR_API_KEY` with your actual API key from Step 1.
+
+## Step 3: Available Services
+
+Choose a service to connect to:
+
+### LLM Service
+Access GPT-5 and other AI models
+
+```
+https://athena-llm-570639954118.us-central1.run.app
+```
+
+### Context Service
+Manage contexts and understandings with vector search
+
+```
+https://athena-context-570639954118.us-central1.run.app
+```
+
+## Step 4: Make Your First Request
+
+Test your API key with a simple health check:
 
 ```bash
-npm install @athena/sdk
+curl -X GET https://athena-llm-570639954118.us-central1.run.app/api/v1/models \
+  -H "Authorization: Bearer YOUR_API_KEY"
 ```
 
-### 3. Initialize Athena
+If successful, you'll see a list of available models:
 
-```javascript
-import { Athena } from '@athena/sdk';
-
-const athena = new Athena({
-  apiKey: 'your-api-key-here'
-});
+```json
+{
+  "models": [
+    {"id": "gpt-5-mini", "name": "GPT-5 Mini"},
+    {"id": "gpt-5", "name": "GPT-5"},
+    {"id": "gpt-4o", "name": "GPT-4 Optimized"}
+  ]
+}
 ```
 
-### 4. Create Your First Context
+## Common Issues
 
-```javascript
-// Store structured data
-const user = await athena.data.create('users', {
-  id: 'user-123',
-  name: 'John Doe',
-  email: 'john@example.com'
-});
+### 401 Unauthorized
+- Check that your API key is valid
+- Ensure you included "Bearer " before your key
+- Verify the key hasn't been revoked
 
-// Add contextual knowledge
-const context = await athena.context.create({
-  type: 'user-preferences',
-  content: 'User prefers dark mode and compact layouts',
-  metadata: {
-    userId: 'user-123',
-    category: 'ui-preferences'
-  }
-});
-
-// Upload and process files
-const file = await athena.files.upload('./document.pdf', {
-  context: 'project-documentation',
-  extract: true // Automatically extract and index content
-});
-```
+### 429 Too Many Requests
+- You've exceeded the rate limit (60 req/min)
+- Wait a moment before retrying
+- Consider implementing exponential backoff
 
 ## Next Steps
 
-- [Explore the API Reference](/docs/api-reference)
-- [Learn about Context Types](/docs/context-types)
-- [Understand Knowledge Graphs](/docs/knowledge-graphs)
-- [Build Your First App](/docs/tutorials/first-app)
+- [Explore LLM Service](/docs/llm-service) - Access GPT-5 and other models
+- [Learn Context Service](/docs/context-service) - Manage knowledge with vector search
+- [View API Reference](/docs/api-reference) - Complete endpoint documentation

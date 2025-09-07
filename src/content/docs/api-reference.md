@@ -1,6 +1,6 @@
 ---
 title: "API Reference"
-description: "Complete API documentation for the Athena platform"
+description: "Complete technical documentation for all Athena API endpoints"
 section: "API Reference"
 order: 1
 draft: false
@@ -8,134 +8,121 @@ draft: false
 
 # API Reference
 
-The Athena API provides a unified interface for managing structured data, AI context, and files.
-
-## Base URL
-
-```
-https://api.athena.ai/v1
-```
+Complete technical documentation for all Athena API endpoints.
 
 ## Authentication
 
-All API requests require authentication using your API key:
+All API requests must include an Authorization header with a Bearer token:
 
-```bash
-curl -H "Authorization: Bearer YOUR_API_KEY" \
-  https://api.athena.ai/v1/contexts
+```
+Authorization: Bearer YOUR_API_KEY
 ```
 
-## Core Endpoints
+API keys can be generated from your dashboard. Keys are validated using Unkey.
 
-### Data Management
+## Base URLs
 
-#### Create Data Entry
-```http
-POST /data/{collection}
+### LLM Service
+```
+https://athena-llm-570639954118.us-central1.run.app
 ```
 
-Store structured data in a collection.
+### Context Service
+```
+https://athena-context-570639954118.us-central1.run.app
+```
 
+## Response Format
+
+All API responses follow a consistent JSON format:
+
+### Success Response
 ```json
 {
-  "id": "unique-id",
-  "field1": "value1",
-  "field2": "value2"
+  "data": { ... },      // Response data
+  "status": "success"   // Optional status field
 }
 ```
 
-#### Query Data
-```http
-GET /data/{collection}?filter={query}
-```
-
-Query structured data with filtering and pagination.
-
-### Context Management
-
-#### Create Context
-```http
-POST /contexts
-```
-
-Create a new context entry with embeddings.
-
+### Error Response
 ```json
 {
-  "type": "context-type",
-  "content": "The context content to store",
-  "metadata": {
-    "key": "value"
-  }
+  "error": "Error message",
+  "detail": "Detailed error information",  // Optional
+  "status_code": 400                       // HTTP status code
 }
 ```
 
-#### Search Contexts
-```http
-POST /contexts/search
-```
+## Status Codes
 
-Semantic search across all contexts.
+- **200 OK** - Request succeeded
+- **201 Created** - Resource created successfully
+- **400 Bad Request** - Invalid request data
+- **401 Unauthorized** - Missing or invalid API key
+- **403 Forbidden** - Insufficient permissions
+- **404 Not Found** - Resource not found
+- **429 Too Many Requests** - Rate limit exceeded
+- **500 Internal Server Error** - Server error
 
-```json
-{
-  "query": "search query",
-  "limit": 10,
-  "filter": {
-    "type": "specific-type"
-  }
-}
-```
+## Rate Limiting
 
-### File Management
+- Default: 60 requests per minute per API key
+- Rate limit information is included in response headers:
+  - `X-RateLimit-Limit`
+  - `X-RateLimit-Remaining`
+  - `X-RateLimit-Reset`
 
-#### Upload File
-```http
-POST /files/upload
-```
+## Common Headers
 
-Upload and process a file.
+### Request Headers
+- `Authorization: Bearer YOUR_API_KEY` (required)
+- `Content-Type: application/json` (for POST/PUT requests)
+- `Accept: application/json`
 
-```bash
-curl -X POST \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -F "file=@document.pdf" \
-  -F "extract=true" \
-  https://api.athena.ai/v1/files/upload
-```
-
-### AI Generation
-
-#### Generate Response
-```http
-POST /generate
-```
-
-Generate an AI response using your contexts.
-
-```json
-{
-  "prompt": "User question or prompt",
-  "context": {
-    "include": ["context-ids"],
-    "search": "additional context search"
-  }
-}
-```
-
-## Rate Limits
-
-- **Free Tier**: 100 requests/minute
-- **Pro Tier**: 1,000 requests/minute
-- **Enterprise**: Custom limits
+### Response Headers
+- `Content-Type: application/json`
+- `X-Request-ID: unique-request-id`
+- `X-Response-Time: milliseconds`
 
 ## Error Handling
 
-Athena uses standard HTTP response codes:
+The API uses standard HTTP status codes and returns detailed error messages:
 
-- `200 OK` - Success
-- `400 Bad Request` - Invalid request
-- `401 Unauthorized` - Invalid API key
-- `404 Not Found` - Resource not found
-- `429 Too Many Requests` - Rate limit exceeded
-- `500 Internal Server Error` - Server error
+```json
+{
+  "error": "Validation failed",
+  "detail": "The 'model' field is required",
+  "status_code": 400,
+  "field_errors": {
+    "model": ["This field is required"]
+  }
+}
+```
+
+## Pagination
+
+List endpoints support pagination using query parameters:
+
+- `page` - Page number (default: 1)
+- `per_page` - Items per page (default: 20, max: 100)
+
+Response includes pagination metadata:
+
+```json
+{
+  "data": [...],
+  "pagination": {
+    "page": 1,
+    "per_page": 20,
+    "total": 156,
+    "pages": 8
+  }
+}
+```
+
+## Service-Specific Documentation
+
+For detailed endpoint documentation, see:
+
+- [LLM Service Documentation](/docs/llm-service)
+- [Context Service Documentation](/docs/context-service)
