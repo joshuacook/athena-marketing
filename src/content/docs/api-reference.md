@@ -6,9 +6,9 @@ order: 1
 draft: false
 ---
 
-# API Reference
+# API Reference (GraphQL)
 
-Complete technical documentation for all Athena API endpoints.
+Athena exposes a single GraphQL API endpoint. Use your API key to authenticate and send queries/mutations to the gateway.
 
 ## Authentication
 
@@ -20,16 +20,10 @@ Authorization: Bearer YOUR_API_KEY
 
 API keys can be generated from your dashboard. Keys are validated using Unkey.
 
-## Base URLs
+## Endpoint
 
-### LLM Service
 ```
-https://athena-llm-570639954118.us-central1.run.app
-```
-
-### Context Service
-```
-https://athena-context-570639954118.us-central1.run.app
+POST https://<your-graphql-service>/graphql
 ```
 
 ## Response Format
@@ -120,9 +114,9 @@ Response includes pagination metadata:
 }
 ```
 
-## Service-Specific Documentation
+## Full Schema & Examples
 
-For detailed endpoint documentation, see:
-
-- [LLM Service Documentation](/docs/llm-service)
-- [Context Service Documentation](/docs/context-service)
+- GraphQL schema (SDL), examples, and detailed guides live in the Developer Portal:
+  - https://athena-developer-portal.vercel.app/docs/graphql/overview
+  - https://athena-developer-portal.vercel.app/docs/graphql/api
+  - https://athena-developer-portal.vercel.app/docs/graphql/examples

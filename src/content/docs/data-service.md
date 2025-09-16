@@ -6,9 +6,12 @@ order: 3
 draft: false
 ---
 
-# Data Service (MVP)
+# Data Service (Concepts)
 
-A thin, conventional CRUD façade over the Context Service. Stores nothing independently; all records live in the Context Service as contexts with metadata.
+This page describes the data domain and behavior. The primary integration surface is GraphQL (single endpoint). For implementation details and schema, see the Developer Portal:
+
+- https://athena-developer-portal.vercel.app/docs/graphql/overview
+- https://athena-developer-portal.vercel.app/docs/graphql/examples
 
 ## Overview
 
@@ -32,17 +35,11 @@ A thin, conventional CRUD façade over the Context Service. Stores nothing indep
 - Data Service enforces org/user guardrails on every call and forwards `org_id` and `user_id` to the Context Service
 - Client-supplied user identifiers are not trusted; identity comes from the API key
 
-## Base URL
-
-```
-<data-service-base-url>
-```
-
-## Endpoints
+## Concepts
 
 ### Create Record
 
-`POST /tables/{kind}/rows`
+Create a record of a kind (GraphQL: createRow)
 
 Body:
 ```json
@@ -67,20 +64,11 @@ Response `201`:
 }
 ```
 
-Example:
-```bash
-curl -X POST <data-service-base-url>/tables/post/rows \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "X-Org-ID: YOUR_ORG_ID" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "metadata": {"title": "Hello", "author_id": "..."}
-  }'
-```
+See example in the Developer Portal examples page.
 
 ### Get Record by ID
 
-`GET /tables/{kind}/rows/{id}`
+Get by ID (GraphQL: row)
 
 Behavior:
 - Fetches a record by ID scoped to the caller's `org_id`
@@ -97,16 +85,11 @@ Response `200`:
 }
 ```
 
-Example:
-```bash
-curl -X GET <data-service-base-url>/tables/post/rows/RECORD_ID \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "X-Org-ID: YOUR_ORG_ID"
-```
+See example in the Developer Portal examples page.
 
 ### Update Record (Partial)
 
-`PATCH /tables/{kind}/rows/{id}`
+Patch a record (GraphQL: patchRow)
 
 Body:
 ```json

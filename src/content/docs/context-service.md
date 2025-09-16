@@ -6,18 +6,19 @@ order: 2
 draft: false
 ---
 
-# Context Service
+# Context Service (Concepts)
 
 Build knowledge graphs with semantic search and structured storage.
+
+> Note: GraphQL is the primary integration surface. For schema & examples, see the Developer Portal:
+> - https://athena-developer-portal.vercel.app/docs/graphql/overview
+> - https://athena-developer-portal.vercel.app/docs/graphql/examples
 
 ## Overview
 
 The Athena Context Service allows you to create hierarchical contexts, store understandings with automatic embeddings, and perform both keyword and vector searches using Firestore.
 
-**Base URL:**
-```
-https://athena-context-570639954118.us-central1.run.app
-```
+**Integration:** Use the GraphQL gateway at a single endpoint instead of service-specific REST URLs.
 
 ## Core Concepts
 
@@ -35,7 +36,7 @@ Knowledge statements with automatic embeddings:
 - Can belong to multiple contexts
 - Include metadata for filtering
 
-## API Endpoints
+## API Endpoints (Legacy)
 
 ### Context Management
 

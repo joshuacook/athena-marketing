@@ -31,43 +31,24 @@ Authorization: Bearer YOUR_API_KEY
 
 Replace `YOUR_API_KEY` with your actual API key from Step 1.
 
-## Step 3: Available Services
+## Step 3: GraphQL Endpoint (Single API)
 
-Choose a service to connect to:
-
-### LLM Service
-Access GPT-5 and other AI models
+Athena exposes a single GraphQL endpoint:
 
 ```
-https://athena-llm-570639954118.us-central1.run.app
+POST https://<your-graphql-service>/graphql
 ```
 
-### Context Service
-Manage contexts and understandings with vector search
+## Step 4: Make Your First Request (GraphQL)
 
-```
-https://athena-context-570639954118.us-central1.run.app
-```
-
-## Step 4: Make Your First Request
-
-Test your API key with a simple health check:
+Try a simple query to verify auth and connectivity:
 
 ```bash
-curl -X GET https://athena-llm-570639954118.us-central1.run.app/api/v1/models \
-  -H "Authorization: Bearer YOUR_API_KEY"
-```
-
-If successful, you'll see a list of available models:
-
-```json
-{
-  "models": [
-    {"id": "gpt-5-mini", "name": "GPT-5 Mini"},
-    {"id": "gpt-5", "name": "GPT-5"},
-    {"id": "gpt-4o", "name": "GPT-4 Optimized"}
-  ]
-}
+curl -s \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  -d '{"query":"{ requestInfo { requestId hasAuthorization } }"}' \
+  https://<your-graphql-service>/graphql | jq
 ```
 
 ## Common Issues
@@ -84,6 +65,7 @@ If successful, you'll see a list of available models:
 
 ## Next Steps
 
-- [Explore LLM Service](/docs/llm-service) - Access GPT-5 and other models
-- [Learn Context Service](/docs/context-service) - Manage knowledge with vector search
-- [View API Reference](/docs/api-reference) - Complete endpoint documentation
+- Read the full GraphQL introduction in the Developer Portal:
+  - https://athena-developer-portal.vercel.app/docs/graphql/overview
+  - https://athena-developer-portal.vercel.app/docs/graphql/api
+  - https://athena-developer-portal.vercel.app/docs/graphql/examples

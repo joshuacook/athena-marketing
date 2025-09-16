@@ -6,7 +6,7 @@ order: 1
 draft: false
 ---
 
-# LLM Service
+# LLM Service (Concepts)
 
 Access GPT-5 and other OpenAI models with advanced features.
 
@@ -132,6 +132,10 @@ All API calls are tracked for usage analytics:
 - Model usage distribution
 - Response times and latencies
 - Error rates and types
+
+> Note: GraphQL is the primary integration surface. For schema & examples, see the Developer Portal:
+> - https://athena-developer-portal.vercel.app/docs/graphql/overview
+> - https://athena-developer-portal.vercel.app/docs/graphql/examples
 
 Access your usage dashboard at the [Developer Portal](https://app.athena.radicalsymmetry.com/dashboard).
 
