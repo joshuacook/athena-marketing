@@ -95,7 +95,7 @@ Athena GraphQL Gateway
      -H 'Content-Type: application/json' \
      -H 'Authorization: Bearer YOUR_API_KEY' \
      -d '{"query":"{ requestInfo { requestId hasAuthorization } }"}' \
-     https://your-athena-graphql-url/graphql | jq
+     https://athena-graphql-6ivigdfuua-uc.a.run.app/graphql | jq
    ```
 
    Successful responses should include `hasAuthorization: true`.
@@ -114,7 +114,7 @@ Athena GraphQL Gateway
 3. Set up `.env.local` with the required secrets:
 
    ```bash
-   ATHENA_GRAPHQL_URL="https://your-athena-graphql-url/graphql"
+   ATHENA_GRAPHQL_URL="https://athena-graphql-6ivigdfuua-uc.a.run.app/graphql"
    ATHENA_API_KEY="athena_xxx" # keep secret, never commit
    ATHENA_ORG_ID="org_123"
    ATHENA_DEFAULT_USER_ID="user_789" # optional helper for server-side proxies
