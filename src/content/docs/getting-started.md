@@ -66,6 +66,6 @@ curl -s \
 ## Next Steps
 
 - Read the full GraphQL introduction in the Developer Portal:
-  - https://athena-developer-portal.vercel.app/docs/graphql/overview
-  - https://athena-developer-portal.vercel.app/docs/graphql/api
-  - https://athena-developer-portal.vercel.app/docs/graphql/examples
+  - GraphQL Overview: https://github.com/rs-athena/athena-graphql#readme
+  - GraphQL API (SDL): https://athena-developer-portal.vercel.app/graphql/schema.graphql
+  - GraphQL Examples: https://github.com/rs-athena/athena-graphql#example-queriesmutations

@@ -10,8 +10,8 @@ draft: false
 
 This page describes the data domain and behavior. The primary integration surface is GraphQL (single endpoint). For implementation details and schema, see the Developer Portal:
 
-- https://athena-developer-portal.vercel.app/docs/graphql/overview
-- https://athena-developer-portal.vercel.app/docs/graphql/examples
+- GraphQL Overview: https://github.com/rs-athena/athena-graphql#readme
+- GraphQL Examples: https://github.com/rs-athena/athena-graphql#example-queriesmutations
 
 ## Overview
 

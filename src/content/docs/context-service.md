@@ -11,8 +11,8 @@ draft: false
 Build knowledge graphs with semantic search and structured storage.
 
 > Note: GraphQL is the primary integration surface. For schema & examples, see the Developer Portal:
-> - https://athena-developer-portal.vercel.app/docs/graphql/overview
-> - https://athena-developer-portal.vercel.app/docs/graphql/examples
+> - GraphQL Overview: https://github.com/rs-athena/athena-graphql#readme
+> - GraphQL Examples: https://github.com/rs-athena/athena-graphql#example-queriesmutations
 
 ## Overview
 
