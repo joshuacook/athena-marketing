@@ -23,7 +23,7 @@ API keys can be generated from your dashboard. Keys are validated using Unkey.
 ## Endpoint
 
 ```
-POST https://<your-graphql-service>/graphql
+POST https://athena-graphql-6ivigdfuua-uc.a.run.app/graphql
 ```
 
 ## Response Format

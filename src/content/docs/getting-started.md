@@ -36,7 +36,7 @@ Replace `YOUR_API_KEY` with your actual API key from Step 1.
 Athena exposes a single GraphQL endpoint:
 
 ```
-POST https://<your-graphql-service>/graphql
+POST https://athena-graphql-6ivigdfuua-uc.a.run.app/graphql
 ```
 
 ## Step 4: Make Your First Request (GraphQL)
@@ -48,7 +48,7 @@ curl -s \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   -d '{"query":"{ requestInfo { requestId hasAuthorization } }"}' \
-  https://<your-graphql-service>/graphql | jq
+  https://athena-graphql-6ivigdfuua-uc.a.run.app/graphql | jq
 ```
 
 ## Common Issues
