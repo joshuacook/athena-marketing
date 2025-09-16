@@ -26,5 +26,8 @@
     "astro-seo": "^0.8.4",
     "sharp": "^0.33.5",
     "tailwindcss": "^4.0.14"
+  },
+  "engines": {
+    "node": ">=20 <23"
   }
 }
